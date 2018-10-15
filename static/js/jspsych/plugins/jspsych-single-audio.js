@@ -6,6 +6,8 @@
  *
  * documentation: docs.jspsych.org
  *
+ 
+ * THIS IS THE ORIGINAL..I edited some stuff, but tried to put it back. might be some stuff that is diff
  **/
 
 jsPsych.plugins["single-audio"] = (function() {
@@ -24,6 +26,7 @@ jsPsych.plugins["single-audio"] = (function() {
     // timing parameters
     trial.timing_response = trial.timing_response || -1; // if -1, then wait for response forever
     trial.prompt = (typeof trial.prompt === 'undefined') ? "" : trial.prompt;
+ 
 
     // if any trial variables are functions
     // this evaluates the function and replaces
@@ -38,8 +41,9 @@ jsPsych.plugins["single-audio"] = (function() {
     var source = context.createBufferSource();
     source.buffer = jsPsych.pluginAPI.getAudioBuffer(trial.stimulus);
     source.connect(context.destination);
-    startTime = context.currentTime + 0.1;
+    startTime = context.currentTime + 0.1; //context.currentTime + 0.1
     source.start(startTime);
+    
 
     // show prompt if there is one
     if (trial.prompt !== "") {
@@ -97,7 +101,7 @@ jsPsych.plugins["single-audio"] = (function() {
     var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
       callback_function: after_response,
       valid_responses: trial.choices,
-      rt_method: 'audio',
+      rt_method: 'date',
       persist: false,
       allow_held_key: false,
       audio_context: context,
